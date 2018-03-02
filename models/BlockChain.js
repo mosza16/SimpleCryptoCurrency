@@ -20,8 +20,8 @@ class BlockChain {
   minePendingTransactions(miningRewardAddress) {
     let block = new Block(new Date(), this.pendingTransactions);
     block.mineBlock(this.difficulty);
-
     console.log("Block successfully mined!");
+    block.previousHash = this.getLastestBlock().hash;
     this.chain.push(block);
 
     this.pendingTransactions = [
